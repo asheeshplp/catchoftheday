@@ -1,0 +1,16 @@
+{% set completed = true %}
+{% set text = "Mark as Incomplete"%}
+{%set class = "glyphicon-remove"%}
+{% for item in items %}
+    {% if item.complete %}
+    <tr>
+        <td>{{ item.id }}</td>
+        <td>{{ item.created|date('d/m/Y g:i a') }}</td>
+        <td>{{ item.text }}</td>
+        <td>            
+            <a data-toggle="tooltip" title="{{ text }}" href="javascript:void(0);" onClick="togglestatus('{{ path('mark_as_complete', { 'itemId': item.id,'type':'uncomplete' }) }}','uncomplete')" class="glyphicon {{ class }}"></a>
+        </td>
+    </tr>
+    {% endif %}
+{% endfor %}
+                   
